@@ -11,12 +11,12 @@ public class ImplementLambda {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		Person p = new Person("Manish","Pareta",32);
-		Person p1 = new Person("Sanoj","Kashyap",34);
-		Person p2 = new Person("Ashok","Chaurasia",31);
-		Person p3 = new Person("Rahul","Baranwal",32);
+		Person2 p = new Person2("Manish","Pareta",32);
+		Person2 p1 = new Person2("Sanoj","Kashyap",34);
+		Person2 p2 = new Person2("Ashok","Chaurasia",31);
+		Person2 p3 = new Person2("Rahul","Baranwal",32);
 		
-		List<Person> pList= new ArrayList<Person>();
+		List<Person2> pList= new ArrayList<Person2>();
 		
 		pList.add(p);
 		pList.add(p1);
@@ -51,8 +51,8 @@ public class ImplementLambda {
 	 * 
 	 * Please check java.util.function pkg for more default implementation Interfaces which can be very useful
 	 */
-	private static void performConditionally(List<Person> pList, Predicate<Person> condition, Consumer<Person> consume) {
-		for (Person person : pList) {
+	private static void performConditionally(List<Person2> pList, Predicate<Person2> condition, Consumer<Person2> consume) {
+		for (Person2 person : pList) {
 			if(condition.test(person)) {//test() implementation is provided on line now 29 and 32 as 2nd argument 
 				//System.out.println(person.toString()); replacing with Consumer
 				consume.accept(person);//accept() implementation is provided on line now 29 and 32 as 3rd argument 

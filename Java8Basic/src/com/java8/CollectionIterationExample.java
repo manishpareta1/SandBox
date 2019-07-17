@@ -9,12 +9,12 @@ public class CollectionIterationExample {
 	
 	public static void main(String[] args) {
 		
-		Person p = new Person("Manish","Pareta",32);
-		Person p1 = new Person("Sanoj","Kashyap",34);
-		Person p2 = new Person("Ashok","Chaurasia",31);
-		Person p3 = new Person("Rahul","Baranwal",32);
+		Person2 p = new Person2("Manish","Pareta",32);
+		Person2 p1 = new Person2("Sanoj","Kashyap",34);
+		Person2 p2 = new Person2("Ashok","Chaurasia",31);
+		Person2 p3 = new Person2("Rahul","Baranwal",32);
 		
-		List<Person> pList= new ArrayList<Person>();
+		List<Person2> pList= new ArrayList<Person2>();
 		
 		pList.add(p);
 		pList.add(p1);
@@ -22,7 +22,7 @@ public class CollectionIterationExample {
 		pList.add(p3);
 		
 		System.out.println("***********Print All Person using for each 7***********");
-		for(Person pl : pList) {
+		for(Person2 pl : pList) {
 			System.out.println(pl.toString());
 		}
 		

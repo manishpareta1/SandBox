@@ -5,19 +5,19 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import com.java8.Person;
+import com.java8.Person2;
 
 public class MapperExample {
 	
 	public static void main(String[] args) {
-		List<Person> pList= Arrays.asList(
-				new Person("Manish","Pareta",32),
-				new Person("Sanoj","Kashyap",34),
-				new Person("Ashok","Chaurasia",31),
-				new Person("Rahul","Baranwal",32)
+		List<Person2> pList= Arrays.asList(
+				new Person2("Manish","Pareta",32),
+				new Person2("Sanoj","Kashyap",34),
+				new Person2("Ashok","Chaurasia",31),
+				new Person2("Rahul","Baranwal",32)
 				);
 		System.out.println("This is how process list before Java 8.");
-		for(Person p : pList) {
+		for(Person2 p : pList) {
 			if(isStartsWithR(p)) {
 				System.out.println(p.toString());
 			}
@@ -32,10 +32,10 @@ public class MapperExample {
 		System.out.println("Using Java 8| 3. Using Mapper #1");//Mappers are used to create differnt objects using Lambda
 		pList.stream()
 		.filter(MapperExample::isStartsWithR)
-		.map(new Function<Person, User>() {
+		.map(new Function<Person2, User>() {
 
 			@Override
-			public User apply(Person t) {
+			public User apply(Person2 t) {
 				User u = new User(t.getFirstName(),t.getAge());
 				return u;
 			}
@@ -68,7 +68,7 @@ public class MapperExample {
 		.map(p-> new User(p.getFirstName(),p.getAge())).collect(Collectors.toList());
 	}
 	
-	public static boolean isStartsWithR(Person p) {
+	public static boolean isStartsWithR(Person2 p) {
 		return p.getFirstName().startsWith("R");
 	}
 

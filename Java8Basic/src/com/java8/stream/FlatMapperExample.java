@@ -6,7 +6,7 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
-import com.java8.Person;
+import com.java8.Person2;
 
 public class FlatMapperExample {
 	
@@ -73,7 +73,7 @@ public class FlatMapperExample {
 	
 	
 	
-	public static boolean isStartsWithR(Person p) {
+	public static boolean isStartsWithR(Person2 p) {
 		return p.getFirstName().startsWith("R");
 	}
 
