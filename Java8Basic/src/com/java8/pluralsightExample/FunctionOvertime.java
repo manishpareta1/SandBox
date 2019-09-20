@@ -1,6 +1,7 @@
 package com.java8.pluralsightExample;
 
 
+import java.util.function.Function;
 
 @FunctionalInterface
 interface FunctionOvertime {
@@ -30,5 +31,20 @@ interface FunctionOvertime {
             }
             return sum;
         };
+    }
+
+    //Added another interface to calculate Profit
+
+    @FunctionalInterface
+    static interface FunctionOf3{
+
+        double apply(double sales, double fixedCost, double incrementalCost);
+    }
+//Function inside a function, its complex to understand but give better clarity on the implementation
+    static FunctionOvertime calculateProfite(final FunctionOvertime sales,
+                                             final FunctionOvertime fixed,
+                                             final FunctionOvertime increment,
+                                             final FunctionOf3 f){
+        return time-> f.apply(sales.valutAt(time),fixed.valutAt(time),increment.valutAt(time));
     }
 }
