@@ -8,21 +8,24 @@ public class ExampleProfitPrediction {
 
     public static void main(String[] args) {
         //Sales class initialization
-        final Sales sales = new Sales(EXPECTED_SALES_JAN_TO_DEC);
+        final FunctionOvertime sales = (time) ->EXPECTED_SALES_JAN_TO_DEC[time-1];
 
         //FixedClass initialization
-        final FixedCosts fixedCost = new FixedCosts(15.0);
-
+        final FunctionOvertime fixedCost = (time) -> 0.15;
 
         //Incremental Cost initialization
-        final IncrementalCosts incrementalCost = new IncrementalCosts(5.1,0.15);
+        final FunctionOvertime incrementalCost =
+                (time) -> 5.1 + 0.15*time;
 
         //Profit Class Initialization
-        final Profit profitf = new Profit(sales, incrementalCost, fixedCost);
+        final FunctionOvertime profit =
+                (time) -> sales.valutAt(time)-
+                        (incrementalCost.valutAt(time) +
+                                fixedCost.valutAt(time));
 
         double total = 0.0;
         for(int i=1;i<=12;i++){
-            total += profitf.valueAt(i);
+            total += profit.valutAt(i);
         }
 
         System.out.println("Total profit for the year is: "+total);
