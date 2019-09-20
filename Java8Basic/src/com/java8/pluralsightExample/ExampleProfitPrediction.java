@@ -8,14 +8,22 @@ public class ExampleProfitPrediction {
 
     public static void main(String[] args) {
         //Sales class initialization
-        final FunctionOvertime sales = (time) ->EXPECTED_SALES_JAN_TO_DEC[time-1];
+        //final FunctionOvertime sales = (time) ->EXPECTED_SALES_JAN_TO_DEC[time-1];
+        //Changes for removing code duplicacy, objective here is to make code more precise and readable.
+        //in general terms we are trying to move code expression to methods, so that the code becomes more flexible
+        //and readable, with the use of Static and default methods of Functional Interface.
+        //
 
-        //FixedClass initialization
-        final FunctionOvertime fixedCost = (time) -> 0.15;
+        //#1 Code duplicacy
+        final FunctionOvertime sales =
+                FunctionOvertime.monthByMonth(EXPECTED_SALES_JAN_TO_DEC);
+        //#2 Code duplicacy
+        final FunctionOvertime fixedCost =
+                FunctionOvertime.fixedCost(15.0);
 
-        //Incremental Cost initialization
+       //#3 Code duplicacy
         final FunctionOvertime incrementalCost =
-                (time) -> 5.1 + 0.15*time;
+                FunctionOvertime.incrementalCost(5.0, 0.15);
 
         //Profit Class Initialization
         final FunctionOvertime profit =
