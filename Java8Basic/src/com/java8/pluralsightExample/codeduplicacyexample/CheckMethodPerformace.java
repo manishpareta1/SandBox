@@ -20,22 +20,31 @@ public class CheckMethodPerformace {
 
     public static void main(String[] args) {
 
+        /*final Date costTime = new Date();
+         final Double cost = calculateCost();
+         final Long totalCostTime = new Date().getTime() - costTime.getTime();
+         System.out.println("Time taken for cost calculation: "+ totalCostTime);*/
+        //Refactored Cost calculation using Functional interface and separating duplicate code.
+        Double costResult =
+                TimeCalculation.checkTime("Time taken for Cost calculation: ", CheckMethodPerformace::calculateCost);
 
-        final Date costTime = new Date();
-        final Double cost = calculateCost();
-        final Long totalCostTime = new Date().getTime() - costTime.getTime();
-        System.out.println("Time taken for cost calculation: "+ totalCostTime);
+        /*final Date revenueTime = new Date();
+         final Double revenue = calculateRevenue();
+         final Long totalRevenueTime = new Date().getTime() - revenueTime.getTime();
+         System.out.println("Time taken for cost calculation: "+ totalRevenueTime);*/
+        //Refactored Revenue calculation using Functional interface and separating duplicate code.
+        Double revenueResult =
+                TimeCalculation.checkTime("Time taken for Revenue calculation: ", CheckMethodPerformace::calculateRevenue);
 
+       /* final Date profitTime = new Date();
+         final Double profit = calculateProfit(cost, revenue);
+         final Long totalProfitTime = new Date().getTime() - profitTime.getTime();
+         System.out.println("Time taken for cost calculation: "+ totalProfitTime);*/
+        //Refactored Profit calculation using Functional interface and separating duplicate code.
+        Double profitResult =
+                TimeCalculation.checkTime("Time taken for Profit calculation: ", ()->calculateProfit(costResult, revenueResult));
 
-        final Date revenueTime = new Date();
-        final Double revenue = calculateRevenue();
-        final Long totalRevenueTime = new Date().getTime() - revenueTime.getTime();
-        System.out.println("Time taken for cost calculation: "+ totalRevenueTime);
-
-        final Date profitTime = new Date();
-        final Double profit = calculateProfit(cost, revenue);
-        final Long totalProfitTime = new Date().getTime() - profitTime.getTime();
-        System.out.println("Time taken for cost calculation: "+ totalProfitTime);
+        System.out.println("Total Profit is: "+profitResult);
     }
 
     private static Double calculateCost() {
