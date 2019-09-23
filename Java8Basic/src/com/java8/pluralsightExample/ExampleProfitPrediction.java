@@ -34,8 +34,11 @@ public class ExampleProfitPrediction {
                                 fixedCost.valutAt(time));*/
         //Passing function inside a function which is returning a function for profit calculation
         //and pass implementation of the final profit calculation.
-        final Profit profit = new Profit(sales, fixedCost,
-                incrementalCost);
+        /*final FunctionOvertime profit =
+               FunctionOvertime.calculateProfite(sales, fixedCost, incrementalCost,
+                       (s, f, in)->s - f- in);*/
+        final Profit profit =
+                new Profit(sales, fixedCost, incrementalCost);
 
         double total = 0.0;
         for(int i=1;i<=12;i++){
