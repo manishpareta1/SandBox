@@ -41,8 +41,10 @@ public class CheckMethodPerformace {
          final Long totalProfitTime = new Date().getTime() - profitTime.getTime();
          System.out.println("Time taken for cost calculation: "+ totalProfitTime);*/
         //Refactored Profit calculation using Functional interface and separating duplicate code.
+        //using overloaded method, compared to cost and revenue.
         Double profitResult =
-                TimeCalculation.checkTime("Time taken for Profit calculation: ", ()->calculateProfit(costResult, revenueResult));
+                TimeCalculation.checkTime("Time taken for Profit calculation: ",
+                        System.out::println,()->calculateProfit(costResult, revenueResult));
 
         System.out.println("Total Profit is: "+profitResult);
     }
